@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(vector<int> &arr,int n,vector<int> &ds,int ind)
+{
+    if(ind>=n)
+    {
+         if(ds.empty())
+        {
+          cout<<"{}"<<endl;
+        }
+        for(auto i : ds)
+         cout<<i<<" ";
+        cout<<endl;
+        return;
+    }
+   
+    //take
+    ds.push_back(arr[ind]);
+    print(arr,n,ds,ind+1);
+    
+    //not take
+    ds.pop_back();
+    print(arr,n,ds,ind+1);
+}
+
+int main()
+{
+   vector<int> arr = {10,20,30,40};
+   
+   vector<int> ds;
+   print(arr,arr.size(),ds,0);
+   return 0;
+}
